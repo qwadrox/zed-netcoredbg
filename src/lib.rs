@@ -166,7 +166,9 @@ impl zed::Extension for NetCoreDbgExtension {
                     cwd: None,
                     env: HashMap::new(),
                     stop_at_entry: config.stop_on_entry,
-                    process_id: Some(ProcessId::Int(process_id as i32)),
+                    process_id: Some(ProcessId::Int(process_id.try_into().map_err(|_| {
+                        format!("Process ID {} is too large to fit in i32", process_id)
+                    })?)),
                     just_my_code: None,
                     enable_step_filtering: None,
                 };
