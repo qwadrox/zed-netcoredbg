@@ -281,23 +281,6 @@ impl BinaryManager {
 
         let _ = self.cached_binary_path.set(binary_path.clone());
 
-        self.validate_binary(&binary_path)?;
-
         Ok(binary_path)
-    }
-
-    /// Validates that the binary exists
-    fn validate_binary(&self, binary_path: &str) -> Result<(), String> {
-        let path = std::path::Path::new(binary_path);
-
-        if !path.exists() {
-            return Err(format!("netcoredbg binary not found at: {}", binary_path));
-        }
-
-        if !path.is_file() {
-            return Err(format!("netcoredbg path is not a file: {}", binary_path));
-        }
-
-        Ok(())
     }
 }
