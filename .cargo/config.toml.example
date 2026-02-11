@@ -1,0 +1,18 @@
+# Windows MSVC linker configuration
+#
+# On Windows, Git's usr/bin/link.exe shadows the MSVC linker, causing silent
+# build failures. This config explicitly points Cargo to the correct linker.
+#
+# To use: copy this file to .cargo/config.toml and update the paths below
+# to match your Visual Studio installation.
+#
+# To find your paths:
+#   1. Open "Developer Command Prompt for VS 2022"
+#   2. Run: where link.exe    (use the path under VC\Tools\MSVC\...)
+#   3. Run: echo %LIB%        (copy the full value)
+
+[target.x86_64-pc-windows-msvc]
+linker = "C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\<VERSION>\\bin\\Hostx64\\x64\\link.exe"
+
+[env]
+LIB = "C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\<SDK_VERSION>\\um\\x64;C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\<SDK_VERSION>\\ucrt\\x64;C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\<VERSION>\\lib\\x64"

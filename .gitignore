@@ -26,4 +26,12 @@ Thumbs.db
 
 # Temporary files
 *.tmp
-*.temp 
+*.temp
+
+# Machine-specific Cargo config (see .cargo/config.toml.example)
+.cargo/config.toml
+
+# Build scripts and downloaded tools
+*.bat
+wasm-tools*
+wasi_snapshot_preview1*
