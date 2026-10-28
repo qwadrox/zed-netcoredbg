@@ -1,6 +1,5 @@
 # Rust/Cargo
 /target/
-Cargo.lock
 *.pdb
 
 # Zed extension build artifacts
